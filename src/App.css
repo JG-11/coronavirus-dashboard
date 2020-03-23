@@ -1,0 +1,78 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  margin-Top: 5vmin;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.container {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.title {
+  color: white;
+}
+
+.total {
+  color: #00a9ea;
+}
+
+.recovered {
+  color: #f8b133;
+}
+
+.deaths {
+  color: #ff3452;
+}
+
+.amount {
+  color: white;
+  margin-left: 10px;
+}
+
+.credits {
+  color: white;
+  font-size: calc(2px + 2vmin);
+}
+
+.App-link {
+  color: #61dafb;
+  margin-bottom: 50px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
