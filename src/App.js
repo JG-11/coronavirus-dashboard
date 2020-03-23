@@ -29,9 +29,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <img
+        {/*<img
           src={process.env.PUBLIC_URL + "world.png"}
-          className="App-logo" alt="world"/>
+        className="App-logo" alt="world"/>*/}
         <h1 className="title">
           Casos del COVID-19
         </h1>
