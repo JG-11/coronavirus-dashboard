@@ -35,6 +35,15 @@ class App extends React.Component {
         <h1 className="title">
           Casos del COVID-19
         </h1>
+        {
+          this.state.mexico && this.state.china && this.state.italy && this.state.spain &&
+          <Chart
+            mexico={this.state.mexico[0]['confirmed']}
+            china={this.state.china[0]['confirmed']}
+            italy={this.state.italy[0]['confirmed']}
+            spain={this.state.spain[0]['confirmed']}
+          />
+        }
         <div className="column">
           <h2 className="title">
             México
@@ -142,18 +151,9 @@ class App extends React.Component {
             }
           </div>
         </div>
-        {
-          this.state.mexico && this.state.china && this.state.italy && this.state.spain &&
-          <Chart
-            mexico={this.state.mexico[0]['confirmed']}
-            china={this.state.china[0]['confirmed']}
-            italy={this.state.italy[0]['confirmed']}
-            spain={this.state.spain[0]['confirmed']}
-          />
-        }
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/JG-11/coronavirus-dashboard"
           target="_blank"
           rel="noopener noreferrer">
           Visita el repositorio
