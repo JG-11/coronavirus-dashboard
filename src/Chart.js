@@ -1,6 +1,7 @@
 import React from 'react'
+import './App.css'
 
-import { HorizontalBar, Polar } from 'react-chartjs-2'
+import { HorizontalBar, Radar } from 'react-chartjs-2'
 
 const HorizontalBarChart = props => {
     const mexico = props.mexico.replace(',', '')
@@ -29,7 +30,7 @@ const HorizontalBarChart = props => {
     )
 }
 
-export const PolarChart = props => {
+export const RadarChart = props => {
     const mexico = props.mexico.replace(',', '')
     const usa = props.usa.replace(',', '')
     const china = props.china.replace(',', '')
@@ -52,7 +53,7 @@ export const PolarChart = props => {
     }
 
     return (
-        <Polar data={data}/> 
+        <Radar data={data}/>
     )
 }
 

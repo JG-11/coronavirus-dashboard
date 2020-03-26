@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 
 import getData from './API'
-import HorizontalBarChart, { PolarChart } from './Chart'
+import HorizontalBarChart, { RadarChart } from './Chart'
 import Country from './Country'
 
 
@@ -134,7 +134,7 @@ class App extends React.Component {
 
         {
           this.state.mexico && this.state.china && this.state.italy && this.state.spain && this.state.usa &&
-          <PolarChart
+          <RadarChart
             mexico={this.state.mexico[0]['recovered']}
             usa={this.state.usa[0]['recovered']}
             china={this.state.china[0]['recovered']}
