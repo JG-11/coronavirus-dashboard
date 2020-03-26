@@ -53,6 +53,10 @@
   color: #ff3452;
 }
 
+.critical {
+  color: #ff6960;
+}
+
 .amount {
   color: white;
   margin-left: 10px;
@@ -60,7 +64,7 @@
 
 .credits {
   color: white;
-  font-size: calc(2px + 2vmin);
+  font-size: calc(4px + 2vmin);
 }
 
 .App-link {
