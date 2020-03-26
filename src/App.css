@@ -73,6 +73,10 @@
   margin-bottom: 50px;
 }
 
+.top {
+  margin-top: 5vmin;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -144,7 +144,7 @@ class App extends React.Component {
         }
         
         <a
-          className="App-link"
+          className="App-link top"
           href="https://github.com/JG-11/coronavirus-dashboard"
           target="_blank"
           rel="noopener noreferrer">
