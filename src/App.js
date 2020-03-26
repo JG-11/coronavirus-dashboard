@@ -1,12 +1,15 @@
 import React from 'react'
 import './App.css'
+
 import getData from './API'
-import Chart from './Chart';
+import HorizontalBarChart, { PolarChart } from './Chart'
+import Country from './Country'
 
 
 class App extends React.Component {
   state = {
     mexico: null,
+    usa: null,
     china: null,
     italy: null,
     spain: null
@@ -14,12 +17,14 @@ class App extends React.Component {
 
   componentDidMount = async() =>  {
     const mexico = await getData('Mexico')
+    const usa = await getData('USA')
     const china = await getData('China')
     const italy = await getData('Italy')
     const spain = await getData('Spain')
 
     this.setState({
       mexico,
+      usa,
       china,
       italy,
       spain
@@ -31,126 +36,113 @@ class App extends React.Component {
       <div className="container">
         <img
           src={process.env.PUBLIC_URL + "world.png"}
-        className="App-logo" alt="world"/>
+          className="App-logo" alt="world"/>
         <h1 className="title">
           Casos del COVID-19
         </h1>
+
         {
-          this.state.mexico && this.state.china && this.state.italy && this.state.spain &&
-          <Chart
+          this.state.mexico && this.state.china && this.state.italy && this.state.spain && this.state.usa &&
+          <HorizontalBarChart
             mexico={this.state.mexico[0]['confirmed']}
+            usa={this.state.usa[0]['confirmed']}
             china={this.state.china[0]['confirmed']}
             italy={this.state.italy[0]['confirmed']}
             spain={this.state.spain[0]['confirmed']}
           />
         }
-        <div className="column">
-          <h2 className="title">
-            México
-          </h2>
-          <div className="row">
-            <h3 className="total">Casos confirmados</h3>
-            {
-              this.state.mexico && 
-              <p className="amount"> = <code>{this.state.mexico[0]['confirmed']}</code></p>
-            }
-          </div>
-          <div className="row">
-            <h3 className="recovered">Total de recuperados</h3>
-            {
-              this.state.mexico && 
-              <p className="amount"> = <code>{this.state.mexico[0]['recovered']}</code></p>
-            }
-          </div>
-          <div className="row">
-            <h3 className="deaths">Muertes totales</h3>
-            {
-              this.state.mexico &&
-              <p className="amount"> = <code>{this.state.mexico[0]['deaths']}</code></p>
-            }   
-          </div>
-        </div>
 
-        <div className="column">
-          <h2 className="title">
-            China
-          </h2>
-          <div className="row">
-            <h3 className="total">Casos confirmados</h3>
-            {
-              this.state.china && 
-              <p className="amount"> = <code>{this.state.china[0]['confirmed']}</code></p>
-            }
-          </div>
-          <div className="row">
-            <h3 className="recovered">Total de recuperados</h3>
-            {
-              this.state.china && 
-              <p className="amount"> = <code>{this.state.china[0]['recovered']}</code></p>
-            }
-          </div>
-          <div className="row">
-            <h3 className="deaths">Muertes totales</h3>
-            {
-              this.state.china &&
-              <p className="amount"> = <code>{this.state.china[0]['deaths']}</code></p>
-            }
-          </div>
-        </div>
+        <Country
+          name="México"
+          confirmed={
+            this.state.mexico && this.state.mexico[0]['confirmed']
+          }
+          recovered={
+            this.state.mexico && this.state.mexico[0]['recovered']
+          }
+          deaths={
+            this.state.mexico && this.state.mexico[0]['deaths']
+          }
+          critical={
+            this.state.mexico && this.state.mexico[0]['critical']
+          }
+        />
 
-        <div className="column">
-          <h2 className="title">
-            Italia
-          </h2>
-          <div className="row">
-            <h3 className="total">Casos confirmados</h3>
-            {
-              this.state.italy && 
-              <p className="amount"> = <code>{this.state.italy[0]['confirmed']}</code></p>
-            }
-          </div>
-          <div className="row">
-            <h3 className="recovered">Total de recuperados</h3>
-            {
-              this.state.italy && 
-              <p className="amount"> = <code>{this.state.italy[0]['recovered']}</code></p>
-            }
-          </div>
-          <div className="row">
-            <h3 className="deaths">Muertes totales</h3>
-            {
-              this.state.italy &&
-              <p className="amount"> = <code>{this.state.italy[0]['deaths']}</code></p>
-            }
-          </div>
-        </div>
+        <Country
+          name="Estados Unidos"
+          confirmed={
+            this.state.usa && this.state.usa[0]['confirmed']
+          }
+          recovered={
+            this.state.usa && this.state.usa[0]['recovered']
+          }
+          deaths={
+            this.state.usa && this.state.usa[0]['deaths']
+          }
+          critical={
+            this.state.usa && this.state.usa[0]['critical']
+          }
+        />
 
-        <div className="column">
-          <h2 className="title">
-            España
-          </h2>
-          <div className="row">
-            <h3 className="total">Casos confirmados</h3>
-            {
-              this.state.spain && 
-              <p className="amount"> = <code>{this.state.spain[0]['confirmed']}</code></p>
-            }
-          </div>
-          <div className="row">
-            <h3 className="recovered">Total de recuperados</h3>
-            {
-              this.state.spain && 
-              <p className="amount"> = <code>{this.state.spain[0]['recovered']}</code></p>
-            }
-          </div>
-          <div className="row">
-            <h3 className="deaths">Muertes totales</h3>
-            {
-              this.state.spain &&
-              <p className="amount"> = <code>{this.state.spain[0]['deaths']}</code></p>
-            }
-          </div>
-        </div>
+        <Country
+          name="China"
+          confirmed={
+            this.state.china && this.state.china[0]['confirmed']
+          }
+          recovered={
+            this.state.china && this.state.china[0]['recovered']
+          }
+          deaths={
+            this.state.china && this.state.china[0]['deaths']
+          }
+          critical={
+            this.state.china && this.state.china[0]['critical']
+          }
+        />
+
+        <Country
+          name="Italia"
+          confirmed={
+            this.state.italy && this.state.italy[0]['confirmed']
+          }
+          recovered={
+            this.state.italy && this.state.italy[0]['recovered']
+          }
+          deaths={
+            this.state.italy && this.state.italy[0]['deaths']
+          }
+          critical={
+            this.state.italy && this.state.italy[0]['critical']
+          }
+        />
+
+        <Country
+          name="España"
+          confirmed={
+            this.state.spain && this.state.spain[0]['confirmed']
+          }
+          recovered={
+            this.state.spain && this.state.spain[0]['recovered']
+          }
+          deaths={
+            this.state.spain && this.state.spain[0]['deaths']
+          }
+          critical={
+            this.state.spain && this.state.spain[0]['critical']
+          }
+        />
+
+        {
+          this.state.mexico && this.state.china && this.state.italy && this.state.spain && this.state.usa &&
+          <PolarChart
+            mexico={this.state.mexico[0]['recovered']}
+            usa={this.state.usa[0]['recovered']}
+            china={this.state.china[0]['recovered']}
+            italy={this.state.italy[0]['recovered']}
+            spain={this.state.spain[0]['recovered']}
+          />
+        }
+        
         <a
           className="App-link"
           href="https://github.com/JG-11/coronavirus-dashboard"
@@ -158,6 +150,7 @@ class App extends React.Component {
           rel="noopener noreferrer">
           Visita el repositorio
         </a>
+
         <p className="credits">
           <code>Programado gracias a una Dr. Pepper, por Genaro Almaraz </code>
           <span role="img" aria-label="happy-face">😀</span>
