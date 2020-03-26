@@ -16,8 +16,9 @@ const getData = async(name) => {
       const confirmed = country['cases']
       const deaths = country['deaths']
       const recovered = country['total_recovered']
+      const critical = country['serious_critical']
 
-      data.push({confirmed, deaths, recovered})
+      data.push({confirmed, deaths, recovered, critical})
     }
   })
 
