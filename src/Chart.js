@@ -6,12 +6,14 @@ import { HorizontalBar, Radar } from 'react-chartjs-2'
 const HorizontalBarChart = props => {
     const mexico = props.mexico.replace(',', '')
     const usa = props.usa.replace(',', '')
+    const ireland = props.ireland.replace(',', '')
+    const brazil = props.brazil.replace(',', '')
     const china = props.china.replace(',', '')
     const italy = props.italy.replace(',', '')
     const spain = props.spain.replace(',', '')
 
     const data = {
-        labels: ['México', 'USA', 'China', 'Italia', 'España'],
+        labels: ['México', 'USA', 'Irlanda', 'Brasil', 'China', 'Italia', 'España'],
         datasets: [
             {
                 label: 'Casos confirmados',
@@ -20,7 +22,7 @@ const HorizontalBarChart = props => {
                 borderWidth: 1,
                 hoverBackgroundColor: 'rgba(0, 167, 241, 0.4)',
                 hoverBorderColor: 'rgba(0, 167, 241, 1)',
-                data: [mexico, usa, china, italy, spain]
+                data: [mexico, usa, ireland, brazil, china, italy, spain]
             }
         ]
     }
@@ -33,12 +35,14 @@ const HorizontalBarChart = props => {
 export const RadarChart = props => {
     const mexico = props.mexico.replace(',', '')
     const usa = props.usa.replace(',', '')
+    const ireland = props.ireland.replace(',', '')
+    const brazil = props.brazil.replace(',', '')
     const china = props.china.replace(',', '')
     const italy = props.italy.replace(',', '')
     const spain = props.spain.replace(',', '')
 
     const data = {
-        labels: ['México', 'USA', 'China', 'Italia', 'España'],
+        labels: ['México', 'USA', 'Irlanda', 'Brasil', 'China', 'Italia', 'España'],
         datasets: [
             {
                 label: 'Total de recuperados',
@@ -47,7 +51,7 @@ export const RadarChart = props => {
                 borderWidth: 1,
                 hoverBackgroundColor: 'rgba(0, 167, 241, 0.4)',
                 hoverBorderColor: 'rgba(0, 167, 241, 1)',
-                data: [mexico, usa, china, italy, spain]
+                data: [mexico, usa, ireland, brazil, china, italy, spain]
             }
         ]
     }

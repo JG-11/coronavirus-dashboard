@@ -10,6 +10,8 @@ class App extends React.Component {
   state = {
     mexico: null,
     usa: null,
+    ireland: null,
+    brazil: null,
     china: null,
     italy: null,
     spain: null
@@ -18,6 +20,8 @@ class App extends React.Component {
   componentDidMount = async() =>  {
     const mexico = await getData('Mexico')
     const usa = await getData('USA')
+    const ireland = await getData('Ireland')
+    const brazil = await getData('Brazil')
     const china = await getData('China')
     const italy = await getData('Italy')
     const spain = await getData('Spain')
@@ -25,6 +29,8 @@ class App extends React.Component {
     this.setState({
       mexico,
       usa,
+      ireland,
+      brazil,
       china,
       italy,
       spain
@@ -42,10 +48,13 @@ class App extends React.Component {
         </h1>
 
         {
-          this.state.mexico && this.state.china && this.state.italy && this.state.spain && this.state.usa &&
+          this.state.mexico && this.state.china && this.state.italy && this.state.spain && 
+          this.state.usa && this.state.ireland && this.state.brazil &&
           <HorizontalBarChart
             mexico={this.state.mexico[0]['confirmed']}
             usa={this.state.usa[0]['confirmed']}
+            ireland={this.state.ireland[0]['confirmed']}
+            brazil={this.state.brazil[0]['confirmed']}
             china={this.state.china[0]['confirmed']}
             italy={this.state.italy[0]['confirmed']}
             spain={this.state.spain[0]['confirmed']}
@@ -81,6 +90,38 @@ class App extends React.Component {
           }
           critical={
             this.state.usa && this.state.usa[0]['critical']
+          }
+        />
+
+        <Country
+          name="Irlanda"
+          confirmed={
+            this.state.ireland && this.state.ireland[0]['confirmed']
+          }
+          recovered={
+            this.state.ireland && this.state.ireland[0]['recovered']
+          }
+          deaths={
+            this.state.ireland && this.state.ireland[0]['deaths']
+          }
+          critical={
+            this.state.ireland && this.state.ireland[0]['critical']
+          }
+        />
+
+        <Country
+          name="Brasil"
+          confirmed={
+            this.state.brazil && this.state.brazil[0]['confirmed']
+          }
+          recovered={
+            this.state.brazil && this.state.brazil[0]['recovered']
+          }
+          deaths={
+            this.state.brazil && this.state.brazil[0]['deaths']
+          }
+          critical={
+            this.state.brazil && this.state.brazil[0]['critical']
           }
         />
 
@@ -133,10 +174,13 @@ class App extends React.Component {
         />
 
         {
-          this.state.mexico && this.state.china && this.state.italy && this.state.spain && this.state.usa &&
+          this.state.mexico && this.state.china && this.state.italy && this.state.spain && 
+          this.state.usa && this.state.ireland && this.state.brazil &&
           <RadarChart
             mexico={this.state.mexico[0]['recovered']}
             usa={this.state.usa[0]['recovered']}
+            ireland={this.state.ireland[0]['recovered']}
+            brazil={this.state.brazil[0]['recovered']}
             china={this.state.china[0]['recovered']}
             italy={this.state.italy[0]['recovered']}
             spain={this.state.spain[0]['recovered']}
