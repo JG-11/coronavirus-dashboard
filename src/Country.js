@@ -4,9 +4,8 @@ import './App.css'
 const Country = props => {
     return (
         <div className="column">
-          <h2 className="title">
-            { props.name }
-          </h2>
+          <img src={`https://www.countryflags.io/${props.code}/flat/64.png`}
+            alt={props.name} />
           <div className="row">
             <h3 className="total">Casos confirmados</h3>
             <p className="amount"> = <code>{ props.confirmed }</code></p>

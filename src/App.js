@@ -63,6 +63,7 @@ class App extends React.Component {
 
         <Country
           name="México"
+          code="MX"
           confirmed={
             this.state.mexico && this.state.mexico[0]['confirmed']
           }
@@ -79,6 +80,7 @@ class App extends React.Component {
 
         <Country
           name="Estados Unidos"
+          code="US"
           confirmed={
             this.state.usa && this.state.usa[0]['confirmed']
           }
@@ -95,6 +97,7 @@ class App extends React.Component {
 
         <Country
           name="Irlanda"
+          code="IE"
           confirmed={
             this.state.ireland && this.state.ireland[0]['confirmed']
           }
@@ -111,6 +114,7 @@ class App extends React.Component {
 
         <Country
           name="Brasil"
+          code="BR"
           confirmed={
             this.state.brazil && this.state.brazil[0]['confirmed']
           }
@@ -127,6 +131,7 @@ class App extends React.Component {
 
         <Country
           name="China"
+          code="CN"
           confirmed={
             this.state.china && this.state.china[0]['confirmed']
           }
@@ -143,6 +148,7 @@ class App extends React.Component {
 
         <Country
           name="Italia"
+          code="IT"
           confirmed={
             this.state.italy && this.state.italy[0]['confirmed']
           }
@@ -159,6 +165,7 @@ class App extends React.Component {
 
         <Country
           name="España"
+          code="ES"
           confirmed={
             this.state.spain && this.state.spain[0]['confirmed']
           }
@@ -206,6 +213,9 @@ class App extends React.Component {
           <code>
             Ícono diseñado por <a href="https://www.flaticon.es/autores/turkkub" title="turkkub" className="App-link">turkkub</a> de <a href="https://www.flaticon.es/" title="Flaticon" className="App-link">www.flaticon.es</a>
           </code>
+        </p>
+        <p className="credits">
+          <code>Banderas proporcionadas por <a href="https://www.countryflags.io/" title="Country Flags" className="App-link">Country Flags</a></code>
         </p>
       </div>
     )
