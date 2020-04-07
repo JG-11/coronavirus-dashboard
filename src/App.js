@@ -63,20 +63,12 @@ class App extends React.Component {
         key: 'deaths',
         className: 'title',
         width: 200
-      },
-      {
-        title: 'Estado crítico',
-        dataIndex: 'critical',
-        key: 'critical',
-        className: 'title',
-        width: 200
       }
     ]
     
     const data = []
     this.state.countries && this.state.countries.map(result => {
-      data.push({name: result['country_name'], cases: result['cases'], recovered: result['total_recovered'], deaths: result['deaths'],
-      critical: result['serious_critical']})
+      data.push({name: result['country_name'], cases: result['cases'], recovered: result['total_recovered'], deaths: result['deaths']})
     })
 
     return (
