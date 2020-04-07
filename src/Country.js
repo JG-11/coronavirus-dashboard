@@ -3,9 +3,11 @@ import './App.css'
 
 const Country = props => {
     return (
+      <div className="row">
         <div className="column">
-          <img src={`https://www.countryflags.io/${props.code}/flat/64.png`}
-            alt={props.name} />
+          <h2 className="title"><code>{props.name}</code></h2>
+        </div>
+        <div className="column">
           <div className="row">
             <h3 className="total">Casos confirmados</h3>
             <p className="amount"> = <code>{ props.confirmed }</code></p>
@@ -23,6 +25,7 @@ const Country = props => {
             <p className="amount"> = <code>{ props.critical }</code></p>  
           </div>
         </div>
+      </div>
     )
 }
 
