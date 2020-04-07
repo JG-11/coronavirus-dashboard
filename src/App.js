@@ -1,9 +1,10 @@
 import React from 'react'
-import './App.css'
+import Table from 'rc-table'
 
+import './App.css'
 import getCountriesData, { getCountryData } from './API'
 import HorizontalBarChart, { RadarChart } from './Chart'
-import Country from './Country'
+import './App.css'
 
 
 class App extends React.Component {
@@ -35,6 +36,49 @@ class App extends React.Component {
   }
 
   render() {
+    const columns = [
+      {
+        dataIndex: 'name',
+        key: 'name',
+        className: 'title',
+        width: 200
+      },
+      {
+        title: 'Casos confirmados',
+        dataIndex: 'cases',
+        key: 'cases',
+        className: 'title',
+        width: 200
+      },
+      {
+        title: 'Total de recuperados',
+        dataIndex: 'recovered',
+        key: 'recovered',
+        className: 'title',
+        width: 200
+      },
+      {
+        title: 'Muertes totales',
+        dataIndex: 'deaths',
+        key: 'deaths',
+        className: 'title',
+        width: 200
+      },
+      {
+        title: 'Estado crítico',
+        dataIndex: 'critical',
+        key: 'critical',
+        className: 'title',
+        width: 200
+      }
+    ]
+    
+    const data = []
+    this.state.countries && this.state.countries.map(result => {
+      data.push({name: result['country_name'], cases: result['cases'], recovered: result['total_recovered'], deaths: result['deaths'],
+      critical: result['serious_critical']})
+    })
+
     return (
       <div className="container">
         <img
@@ -56,19 +100,19 @@ class App extends React.Component {
         }
 
         {
-          this.state.countries && this.state.countries.map(result => {
-            return (
-              <Country
-                name={result['country_name']}
-                confirmed={result['cases']}
-                recovered={result['total_recovered']}
-                deaths={result['deaths']}
-                critical={result['serious_critical']}
-              />
-            )
-          })
+          !this.state.countries && 
+          <h3 className="loading">Cargando datos...</h3>
         }
 
+        {
+          this.state.countries && 
+          <Table
+            columns={columns}
+            data={data}
+            className="content"
+          />
+        }
+      
         {
           this.state.mexico && this.state.china && this.state.italy && this.state.spain && this.state.usa &&
           <RadarChart
@@ -105,4 +149,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default App
