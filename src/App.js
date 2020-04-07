@@ -1,10 +1,10 @@
 import React from 'react'
-import Table from 'rc-table'
+import { Table, Thead, Tbody, Tr, Th, Td }  from 'react-super-responsive-table'
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 
 import './App.css'
 import getCountriesData, { getCountryData } from './API'
 import HorizontalBarChart, { RadarChart } from './Chart'
-import './App.css'
 
 
 class App extends React.Component {
@@ -36,41 +36,6 @@ class App extends React.Component {
   }
 
   render() {
-    const columns = [
-      {
-        dataIndex: 'name',
-        key: 'name',
-        className: 'title',
-        width: 200
-      },
-      {
-        title: 'Casos confirmados',
-        dataIndex: 'cases',
-        key: 'cases',
-        className: 'title',
-        width: 200
-      },
-      {
-        title: 'Total de recuperados',
-        dataIndex: 'recovered',
-        key: 'recovered',
-        className: 'title',
-        width: 200
-      },
-      {
-        title: 'Muertes totales',
-        dataIndex: 'deaths',
-        key: 'deaths',
-        className: 'title',
-        width: 200
-      }
-    ]
-    
-    const data = []
-    this.state.countries && this.state.countries.map(result => {
-      data.push({name: result['country_name'], cases: result['cases'], recovered: result['total_recovered'], deaths: result['deaths']})
-    })
-
     return (
       <div className="container">
         <img
@@ -98,11 +63,28 @@ class App extends React.Component {
 
         {
           this.state.countries && 
-          <Table
-            columns={columns}
-            data={data}
-            className="content"
-          />
+          <Table className="content">
+            <Thead>
+              <Tr>
+                <Th className="title">País</Th>
+                <Th className="title">Casos confirmados</Th>
+                <Th className="title">Total de recuperados</Th>
+                <Th className="title">Muertes totales</Th>
+                <Th className="title">Estado crítico</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {this.state.countries.map(result => 
+                <Tr>
+                  <Td>{result['country_name']}</Td>
+                  <Td>{result['cases']}</Td>
+                  <Td>{result['total_recovered']}</Td>
+                  <Td>{result['deaths']}</Td>
+                  <Td>{result['serious_critical']}</Td>
+                </Tr>
+              )}
+            </Tbody>
+          </Table>
         }
       
         {
@@ -125,7 +107,7 @@ class App extends React.Component {
         </a>
 
         <p className="credits">
-          <code>Programado gracias a una Dr. Pepper, por Genaro Almaraz </code>
+          <code>Programado por Genaro Almaraz </code>
           <span role="img" aria-label="happy-face">😀</span>
         </p>
         <p className="credits">
