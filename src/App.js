@@ -74,7 +74,8 @@ class App extends React.Component {
               </Tr>
             </Thead>
             <Tbody>
-              {this.state.countries.map(result => 
+              {this.state.countries.map(result =>
+                (result['country_name']) && 
                 <Tr>
                   <Td>{result['country_name']}</Td>
                   <Td>{result['cases']}</Td>
