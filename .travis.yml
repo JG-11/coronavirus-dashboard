@@ -16,8 +16,9 @@ env:
     - PROD=''
 
 before_install:
-  if: branch = master
-  env: PROD='--prod'
+  - if [[ $TRAVIS_BRANCH == "master" ]]; then
+    PROD='--prod';
+    fi
 
 script:
   - npm install netlify-cli
