@@ -1,0 +1,25 @@
+language: node_js
+
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+  
+node_js:
+  - '13.0.1'
+
+git:
+  depth: 3
+
+env:
+  - PROD=''
+
+before_install:
+  - if: branch = master
+    env: PROD='--prod'
+
+script:
+  - npm install netlify-cli
+  - npm run build
+  - netlify deploy $PROD --dir=build --message='$TRAVIS_COMMIT_MESSAGE'
+
