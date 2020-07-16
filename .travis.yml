@@ -15,8 +15,8 @@ env:
   - PROD=''
 
 before_install:
-  - if: branch = master
-    env: PROD='--prod'
+  if: branch = master
+  env: PROD='--prod'
 
 script:
   - npm install netlify-cli
