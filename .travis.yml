@@ -23,4 +23,4 @@ before_install:
 script:
   - npm install netlify-cli
   - npm run build
-  - netlify deploy -s $NETLIFY_SITE_ID -t $NETLIFY_AUTH $PROD --dir=build --message='$TRAVIS_COMMIT_MESSAGE'
+  - netlify deploy -s $NETLIFY_SITE_ID --auth $NETLIFY_AUTH $PROD --dir=build --message='$TRAVIS_COMMIT_MESSAGE'
