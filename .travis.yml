@@ -12,7 +12,8 @@ git:
   depth: 3
 
 env:
-  - PROD=''
+  global:
+    - PROD=''
 
 before_install:
   if: branch = master
