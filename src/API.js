@@ -25,7 +25,7 @@ export const getCountryData = async(name) => {
 
   const data = []
 
-  countries_stat.map(country => {
+  countries_stat.forEach(country => {
     if(country['country_name'] === name) {
       const confirmed = country['cases']
       const recovered = country['total_recovered']
