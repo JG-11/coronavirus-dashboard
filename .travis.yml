@@ -23,5 +23,6 @@ before_install:
 script:
   - npm install netlify-cli
   - npm run build
+  - netlify link $NETLIFY_SITE
   - netlify deploy $PROD --dir=build --message='$TRAVIS_COMMIT_MESSAGE'
 
