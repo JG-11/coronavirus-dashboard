@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b65bdbcd-a5d7-4472-8274-c7dbf8f9a65e/deploy-status)](https://app.netlify.com/sites/coronavirus-panel/deploys)
 [![Build Status](https://travis-ci.org/JG-11/coronavirus-dashboard.svg?branch=master)](https://travis-ci.org/JG-11/coronavirus-dashboard)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
