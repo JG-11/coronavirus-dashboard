@@ -10,11 +10,36 @@ import HorizontalBarChart, { RadarChart } from './Chart'
 class App extends React.Component {
   state = {
     countries: null,
+    fullData: null,
+    query: '',
     mexico: null,
     usa: null,
     china: null,
     italy: null,
     spain: null
+  }
+
+  contains = (name, query) => {
+    if(name.includes(query)) {
+      return true
+    }
+
+    return false
+  }
+
+  handleSearch = event => {
+    const text = event.target.value
+    
+    const formattedQuery = text.toLowerCase()
+
+    const data = this.state.fullData.filter(country => {
+      return this.contains(country['country_name'].toLowerCase(), formattedQuery)
+    })
+
+    this.setState({
+      countries: data,
+      query: text
+    })
   }
 
   componentDidMount = async() =>  {
@@ -27,6 +52,7 @@ class App extends React.Component {
 
     this.setState({
       countries,
+      fullData: countries,
       mexico,
       usa,
       china,
@@ -59,6 +85,12 @@ class App extends React.Component {
         {
           !this.state.countries && 
           <h3 className="loading">Cargando datos...</h3>
+        }
+
+        {
+          this.state.countries &&
+            <input type="text" name="query" value={this.state.query} placeholder="Buscar..." onChange={this.handleSearch}
+              className="search-bar" />
         }
 
         {
