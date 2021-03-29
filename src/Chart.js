@@ -8,7 +8,7 @@ const HorizontalBarChart = props => {
         labels: props.labels,
         datasets: [
             {
-                label: 'Casos activos',
+                label: 'Active cases',
                 backgroundColor: 'rgba(0, 167, 241, 0.2)',
                 borderColor: 'rgba(0, 167, 241, 1)',
                 borderWidth: 1,
@@ -30,7 +30,7 @@ export const VerticalBarChart = memo(
             labels: props.labels,
             datasets: [
                 {
-                    label: 'Total de recuperados',
+                    label: 'Total recovered',
                     backgroundColor: 'rgba(0, 167, 241, 0.2)',
                     borderColor: 'rgba(0, 167, 241, 1)',
                     borderWidth: 1,

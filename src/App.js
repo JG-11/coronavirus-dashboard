@@ -70,7 +70,7 @@ class App extends React.Component {
           className="App-logo" alt="world"/>
         
         <h1 className="title">
-          Casos del COVID-19
+          COVID-19
         </h1>
 
         {
@@ -83,13 +83,13 @@ class App extends React.Component {
 
         {
           !this.state.countries && 
-          <h3 className="loading">Cargando datos...</h3>
+          <h3 className="loading">Loading...</h3>
         }
 
         {
           this.state.countries &&
-            <input type="text" name="query" value={this.state.query} placeholder="Buscar..." onChange={this.handleSearch}
-              className="search-bar" />
+            <input type="text" name="query" value={this.state.query} placeholder="Search..."
+              onChange={this.handleSearch} className="search-bar" />
         }
 
         {
@@ -97,11 +97,11 @@ class App extends React.Component {
           <Table className="content">
             <Thead>
               <Tr>
-                <Th className="title">País</Th>
-                <Th className="title">Casos activos</Th>
-                <Th className="title">Total de recuperados</Th>
-                <Th className="title">Muertes totales</Th>
-                <Th className="title">Estado crítico</Th>
+                <Th className="title">Country</Th>
+                <Th className="title">Active cases</Th>
+                <Th className="title">Total recovered</Th>
+                <Th className="title">Deaths</Th>
+                <Th className="title">Critical</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -132,19 +132,19 @@ class App extends React.Component {
           href="https://github.com/JG-11/coronavirus-dashboard"
           target="_blank"
           rel="noopener noreferrer">
-          Visita el repositorio
+          Visit the repo
         </a>
 
         <p className="credits">
-          <code>Programado por Genaro Almaraz </code>
+          <code>Coded by Genaro Almaraz </code>
           <span role="img" aria-label="happy-face">😀</span>
         </p>
         <p className="credits">
-          <code>Datos extraídos de <a href="https://rapidapi.com/astsiatsko/api/coronavirus-monitor/details" title="Coronavirus monitor" className="App-link">Coronavirus monitor</a></code>
+          <code>Data source: <a href="https://rapidapi.com/astsiatsko/api/coronavirus-monitor/details" title="Coronavirus monitor" className="App-link" target="_blank" rel="noopener noreferrer">Coronavirus monitor</a></code>
         </p>
         <p className="credits">
           <code>
-            Ícono diseñado por <a href="https://www.flaticon.es/autores/turkkub" title="turkkub" className="App-link">turkkub</a> de <a href="https://www.flaticon.es/" title="Flaticon" className="App-link">www.flaticon.es</a>
+            Icon designed by <a href="https://www.flaticon.es/autores/turkkub" title="turkkub" className="App-link" target="_blank" rel="noopener noreferrer">turkkub</a> from <a href="https://www.flaticon.es/" title="Flaticon" className="App-link" target="_blank" rel="noopener noreferrer">www.flaticon.es</a>
           </code>
         </p>
       </div>
