@@ -6,7 +6,7 @@ cache:
     - ~/.npm
   
 node_js:
-  - '13.0.1'
+  - '14.16.0'
 
 git:
   depth: 3
