@@ -3,8 +3,8 @@ import { Table, Thead, Tbody, Tr, Th, Td }  from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 
 import './App.css'
-import getCountriesData, { getCountryData } from './API'
-import HorizontalBarChart, { RadarChart } from './Chart'
+import getCountriesData from './API'
+import HorizontalBarChart, { VerticalBarChart } from './Chart'
 
 
 class App extends React.Component {
@@ -12,11 +12,10 @@ class App extends React.Component {
     countries: null,
     fullData: null,
     query: '',
-    mexico: null,
-    usa: null,
-    china: null,
-    italy: null,
-    spain: null
+    top: 3,
+    topCountries: null,
+    topCountriesActiveCases: null,
+    topCountriesRecovered: null
   }
 
   contains = (name, query) => {
@@ -44,20 +43,22 @@ class App extends React.Component {
 
   componentDidMount = async() =>  {
     const countries = await getCountriesData()
-    const mexico = await getCountryData('Mexico')
-    const usa = await getCountryData('USA')
-    const china = await getCountryData('China')
-    const italy = await getCountryData('Italy')
-    const spain = await getCountryData('Spain')
+
+    let topCountries = []
+    let topCountriesActiveCases = []
+    let topCountriesRecovered = []
+    for(let i = 0; i < this.state.top; i++) {
+      topCountries.push(countries[i].country_name)
+      topCountriesActiveCases.push(countries[i].active_cases.replace(/[\s,]/g, ''))
+      topCountriesRecovered.push(countries[i].total_recovered.replace(/[\s,]/g, ''))
+    }
 
     this.setState({
       countries,
       fullData: countries,
-      mexico,
-      usa,
-      china,
-      italy,
-      spain
+      topCountries,
+      topCountriesActiveCases,
+      topCountriesRecovered
     })
   }
 
@@ -67,18 +68,16 @@ class App extends React.Component {
         <img
           src={process.env.PUBLIC_URL + "world.png"}
           className="App-logo" alt="world"/>
+        
         <h1 className="title">
           Casos del COVID-19
         </h1>
 
         {
-          this.state.mexico && this.state.china && this.state.italy && this.state.spain && this.state.usa &&
+          this.state.topCountries && this.state.topCountriesActiveCases &&
           <HorizontalBarChart
-            mexico={this.state.mexico[0]['confirmed']}
-            usa={this.state.usa[0]['confirmed']}
-            china={this.state.china[0]['confirmed']}
-            italy={this.state.italy[0]['confirmed']}
-            spain={this.state.spain[0]['confirmed']}
+            labels={this.state.topCountries}
+            cases={this.state.topCountriesActiveCases}
           />
         }
 
@@ -99,7 +98,7 @@ class App extends React.Component {
             <Thead>
               <Tr>
                 <Th className="title">País</Th>
-                <Th className="title">Casos confirmados</Th>
+                <Th className="title">Casos activos</Th>
                 <Th className="title">Total de recuperados</Th>
                 <Th className="title">Muertes totales</Th>
                 <Th className="title">Estado crítico</Th>
@@ -110,7 +109,7 @@ class App extends React.Component {
                 (result['country_name']) && 
                 <Tr key={result['country_name']}>
                   <Td>{result['country_name']}</Td>
-                  <Td>{result['cases']}</Td>
+                  <Td>{result['active_cases']}</Td>
                   <Td>{result['total_recovered']}</Td>
                   <Td>{result['deaths']}</Td>
                   <Td>{result['serious_critical']}</Td>
@@ -121,13 +120,10 @@ class App extends React.Component {
         }
       
         {
-          this.state.mexico && this.state.china && this.state.italy && this.state.spain && this.state.usa &&
-          <RadarChart
-            mexico={this.state.mexico[0]['recovered']}
-            usa={this.state.usa[0]['recovered']}
-            china={this.state.china[0]['recovered']}
-            italy={this.state.italy[0]['recovered']}
-            spain={this.state.spain[0]['recovered']}
+          this.state.topCountries && this.state.topCountriesRecovered &&
+          <VerticalBarChart
+            labels={this.state.topCountries}
+            cases={this.state.topCountriesRecovered}
           />
         }
         

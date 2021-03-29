@@ -1,60 +1,50 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './App.css'
 
-import { HorizontalBar, Radar } from 'react-chartjs-2'
+import { HorizontalBar, Bar } from 'react-chartjs-2'
 
 const HorizontalBarChart = props => {
-    const mexico = props.mexico.replace(',', '')
-    const usa = props.usa.replace(',', '')
-    const china = props.china.replace(',', '')
-    const italy = props.italy.replace(',', '')
-    const spain = props.spain.replace(',', '')
-
     const data = {
-        labels: ['México', 'USA', 'China', 'Italia', 'España'],
+        labels: props.labels,
         datasets: [
             {
-                label: 'Casos confirmados',
+                label: 'Casos activos',
                 backgroundColor: 'rgba(0, 167, 241, 0.2)',
                 borderColor: 'rgba(0, 167, 241, 1)',
                 borderWidth: 1,
                 hoverBackgroundColor: 'rgba(0, 167, 241, 0.4)',
                 hoverBorderColor: 'rgba(0, 167, 241, 1)',
-                data: [mexico, usa, china, italy, spain]
+                data: props.cases
             }
         ]
     }
 
     return (
-        <HorizontalBar data={data}/> 
+        <HorizontalBar data={data} /> 
     )
 }
 
-export const RadarChart = props => {
-    const mexico = props.mexico.replace(',', '')
-    const usa = props.usa.replace(',', '')
-    const china = props.china.replace(',', '')
-    const italy = props.italy.replace(',', '')
-    const spain = props.spain.replace(',', '')
-
-    const data = {
-        labels: ['México', 'USA', 'China', 'Italia', 'España'],
-        datasets: [
-            {
-                label: 'Total de recuperados',
-                backgroundColor: 'rgba(0, 167, 241, 0.2)',
-                borderColor: 'rgba(0, 167, 241, 1)',
-                borderWidth: 1,
-                hoverBackgroundColor: 'rgba(0, 167, 241, 0.4)',
-                hoverBorderColor: 'rgba(0, 167, 241, 1)',
-                data: [mexico, usa, china, italy, spain]
-            }
-        ]
+export const VerticalBarChart = memo(
+    function BarChart(props) {
+        const data = {
+            labels: props.labels,
+            datasets: [
+                {
+                    label: 'Total de recuperados',
+                    backgroundColor: 'rgba(0, 167, 241, 0.2)',
+                    borderColor: 'rgba(0, 167, 241, 1)',
+                    borderWidth: 1,
+                    hoverBackgroundColor: 'rgba(0, 167, 241, 0.4)',
+                    hoverBorderColor: 'rgba(0, 167, 241, 1)',
+                    data: props.cases
+                }
+            ]
+        }
+    
+        return (
+            <Bar data={data} />
+        )
     }
+)
 
-    return (
-        <Radar data={data}/>
-    )
-}
-
-export default HorizontalBarChart
+export default memo(HorizontalBarChart)
