@@ -7,9 +7,9 @@ const getCountriesData = async() => {
     }
   })
 
-  const {countries_stat} = await response.json()
+  const { countries_stat: countriesStat } = await response.json()
 
-  return countries_stat
+  return countriesStat
 }
 
 export default getCountriesData
